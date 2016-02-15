@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="author" content="SemiColonWeb" />
+
+    <!-- Stylesheets
+    ============================================= -->
+	<link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <link rel="stylesheet" href="css/dark.css" type="text/css" />
+    <link rel="stylesheet" href="css/font-icons.css" type="text/css" />
+    <link rel="stylesheet" href="css/animate.css" type="text/css" />
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
+
+    <link rel="stylesheet" href="css/responsive.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <!--[if lt IE 9]>
+    	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+    <![endif]-->
+
+    <!-- External JavaScripts
+    ============================================= -->
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/plugins.js"></script>
+
+    <!-- Document Title
+    ============================================= -->
+	<title>PMP | Upload Page</title>
+
+</head>
+
+<body class="stretched">
+
+    <!-- Document Wrapper
+    ============================================= -->
+    <div id="wrapper" class="clearfix">
+
+        <!-- Page Title
+        ============================================= -->
+        <section id="page-title">
+
+            <div class="container clearfix">
+                <h1>Upload Form</h1>
+                <ol class="breadcrumb">
+                    <li><a href="#">PMP_Home</a></li>
+                    <li><a href="#">Group Arena</a></li>
+                    <li class="active">Upload Form</li>
+                </ol>
+            </div>
+
+        </section><!-- #page-title end -->
+
+        <!-- Content
+        ============================================= -->
+        <section id="content">
+
+            <div class="content-wrap">
+
+                <div class="container clearfix">
+
+                    <div class="col_half nobottommargin">
+
+                        <h3>Project Report Form</h3>
+
+                        <form id="conditional-form" action="upload.php" method="post" class="nobottommargin" enctype="multipart/form-data">
+
+                            <div class="col_full">
+                                <label for="form-condition-1">Enter Your Team ID</label>
+                                <input type="text" class="sm-form-control required" id="form-condition-1" name="form-condition-1" value="">
+                            </div>
+
+                            <div class="col_full" id="form-condition-2-wrap" style="display:none;">
+                                <label for="form-condition-2">Enter Email(any one of the member)</label>
+                                <input type="email" class="sm-form-control required email" id="form-condition-2" name="form-condition-2" value="">
+                            </div>
+
+                            <div class="col_full" id="form-condition-3-wrap" style="display:none;">
+                                <label for="form-condition-3">Enter Short description </label>
+                                <input type="text" class="sm-form-control required" id="form-condition-3" name="form-condition-3" value="" placeholder="Title of the Project">
+                            </div>
+
+                            <div class="col_full" id="form-condition-4-wrap" style="display:none;">
+                                <label for="form-condition-4">Select Review ID</label>
+                                <select id="form-condition-4" name="form-condition-4" class="required sm-form-control">
+                                    <option value="">-- Select One --</option>
+                                    <option value="review 1">Review 1</option>
+                                    <option value="review 2">Review 2</option>
+                                    <option value="review 3">Review 3</option>
+                                </select>
+                            </div>
+
+                            <div class="col_full" id="form-condition-5-wrap" style="display:none;">
+                                <label for="form-condition-5">Present your current Status of the Project</label>
+                                <textarea class="sm-form-control required" id="form-condition-5" name="form-condition-5" rows="5" col="20" placeholder="Enter Minimum 20 Characters" name="form-condition-5"></textarea>
+                                
+<p>Select image to upload:
+    <input type="file" name="userfile" id="userfile"></p>
+                            </div>
+
+                            <div class="col_full" id="form-condition-submit" style="display:none;">
+                                <button class="button button-3d nomargin" type="submit">UPLOAD</button>
+                            </div>
+
+                        </form>
+
+                        <script>
+                            jQuery(document).ready( function($){
+                                var conditionValidator = $("#conditional-form").validate({
+                                    rules: {
+                                        'form-condition-5': {
+                                            required: true,
+                                            minlength: 20
+                                        }
+                                    }
+                                });
+
+                                $('#form-condition-1').bind('input propertychange', function() {
+                                    if( conditionValidator.element( "#form-condition-1" ) === true ) {
+                                        $('#form-condition-2-wrap').fadeIn();
+                                    } else {
+                                        $('#form-condition-2-wrap').fadeOut();
+                                    }
+                                });
+
+                                $('#form-condition-2').bind('input propertychange', function() {
+                                    if( conditionValidator.element( "#form-condition-2" ) === true ) {
+                                        $('#form-condition-3-wrap').fadeIn();
+                                    } else {
+                                        $('#form-condition-3-wrap').fadeOut();
+                                    }
+                                });
+
+                                $('#form-condition-3').bind('input propertychange', function() {
+                                    if( conditionValidator.element( "#form-condition-3" ) === true ) {
+                                        $('#form-condition-4-wrap').fadeIn();
+                                    } else {
+                                        $('#form-condition-4-wrap').fadeOut();
+                                    }
+                                });
+
+                                $('#form-condition-4').change( function() {
+                                    if( conditionValidator.element( "#form-condition-4" ) === true ) {
+                                        $('#form-condition-5-wrap').fadeIn();
+                                    } else {
+                                        $('#form-condition-5-wrap').fadeOut();
+                                    }
+                                });
+
+                                $('#form-condition-5').bind('input propertychange', function() {
+                                    if( conditionValidator.element( "#form-condition-5" ) === true ) {
+                                        $('#form-condition-submit').fadeIn();
+                                    } else {
+                                        $('#form-condition-submit').fadeOut();
+                                    }
+                                });
+                            });
+                        </script>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section><!-- #content end -->
+        
+        <!-- Footer
+		============================================= -->
+		<footer id="footer" class="dark">		
+
+			<!-- Copyrights
+			============================================= -->
+			<div id="copyrights">
+
+				<div class="container clearfix">
+
+					<div class="col_half">
+						Copyrights &copy; 2015 All Rights Reserved. <br>
+						
+					</div>
+                </div>
+
+			</div><!-- #copyrights end -->
+
+		</footer><!-- #footer end -->
+
+    </div><!-- #wrapper end -->
+
+    <!-- Go To Top
+    ============================================= -->
+    <div id="gotoTop" class="icon-angle-up"></div>
+
+    <!-- Footer Scripts
+    ============================================= -->
+    <script type="text/javascript" src="js/functions.js"></script>
+
+</body>
+</html>

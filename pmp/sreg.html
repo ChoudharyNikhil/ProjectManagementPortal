@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Registration</title>
+</head>
+<body>
+<form action="sregister.php" method="post">
+<p>Group ID:<input type="text" name="name"/></p>
+<p>Email-id:<input type="email" name="mail"/></p>
+<p>Phone:<input type="number" name="phone"/></p>
+<p>Username:<input type="text" name="uname" placeholder="Group name"/></p>
+<p>Password:<input type="password" name="pass" id="pass"/></p>
+<p>Confirm Password:<input type="password" name="cnfpass" id="cnfpass" onblur="val()"/></p>
+<p><input type="submit" value="submit" id="mysubmit"/></p>
+</form>
+<script>
+document.getElementById("mysubmit").disabled=true;
+function val(){
+	var a=document.getElementById("pass").value;
+	var b=document.getElementById("cnfpass").value;
+	if(a!=b){
+	document.getElementById("pass").style.borderColor = "#E34234";
+	document.getElementById("cnfpass").style.borderColor = "#E34234";
+	}
+	else{
+	document.getElementById("pass").style.borderColor = "green";
+	document.getElementById("cnfpass").style.borderColor = "green";
+	document.getElementById("mysubmit").disabled=false;
+	}
+}
+</script>
+</body>
+</html>
